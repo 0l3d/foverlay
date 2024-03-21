@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit git-r3 ninja-utils cmake
+inherit git-r3 desktop ninja-utils cmake
 
 DESCRIPTION="LibreSprite is a free and open source program for creating and animating your sprites."
 HOMEPAGE="https://github.com/LibreSprite/LibreSprite"
@@ -36,6 +36,7 @@ RDEPEND="
     dev-libs/tinyxml2[tinyxml(+)]
     media-libs/freetype[freetype(+)]
     media-libs/libwebp[webp(+)]
+    net-libs/nodejs
 "
 BDEPEND=""
 
@@ -69,4 +70,6 @@ src_compile() {
 src_install() {
 		cd "${S}/build"
 		DESTDIR="${D}" eninja install 
+		newicon -s 48 ../data/icons/ase48.png libresprite.png
+		make_desktop_entry  "libresprite %U" "LibreSprite" "/usr/share/libresprite/data/icons/ase48.png" "Office" 
 }
