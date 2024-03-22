@@ -13,4 +13,4 @@ emerge --sync
 - app-office
   - libresprite
 - games-engine
-  - Godot Engine 4 (C# Support)
+  - Godot Engine 4
