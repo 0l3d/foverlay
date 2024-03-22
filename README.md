@@ -12,5 +12,5 @@ emerge --sync
 ### Package LIST
 - app-office
   - libresprite
-- games-adventure
-  - gaiasky (coming soon)
+- games-engine
+  - Godot Engine 4 (C# Support)
