@@ -12,5 +12,7 @@ emerge --sync
 ### Package LIST
 - app-office
   - libresprite
+- x11-plugins
+  - vala-panel-appmenu
 - games-engine
-  - Godot Engine 4
+  - Godot Engine 4 (Coming SOON)
