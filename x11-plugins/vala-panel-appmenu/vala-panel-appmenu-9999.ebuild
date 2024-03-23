@@ -27,7 +27,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	eselect vala set 1
 	mkdir ${S}/build
 	cd ${S}/build
 		local emesonargs=(
@@ -47,5 +46,5 @@ src_compile() {
 	meson_src_compile
 }
 src_install () {
-	DESTDIR="${D}" meson_src_install
+	meson_src_install
 }
