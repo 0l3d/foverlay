@@ -23,7 +23,6 @@ DEPEND="
 	valapanel? ( x11-misc/vala-panel )
 	xfce? ( xfce-base/xfce4-panel )
 	mate? ( mate-base/mate-panel ) 
-	app-eselect/eselect-vala-appmenu
 "
 RDEPEND="${DEPEND}"
 
