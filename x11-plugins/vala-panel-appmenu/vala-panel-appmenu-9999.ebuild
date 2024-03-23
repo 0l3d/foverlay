@@ -47,5 +47,5 @@ src_compile() {
 	meson_src_compile
 }
 src_install () {
-	meson_src_install
+	DESTDIR="${D}" meson_src_install
 }
