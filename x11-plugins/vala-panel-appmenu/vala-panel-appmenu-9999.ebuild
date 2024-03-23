@@ -13,7 +13,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="+xfce -mate -valapanel -auto_features -jayatana +appmenu-gtk-module"
+IUSE="+xfce -mate -budgie -valapanel -auto_features -jayatana +appmenu-gtk-module"
 
 DEPEND="
 	>=dev-libs/glib-2.50.0
