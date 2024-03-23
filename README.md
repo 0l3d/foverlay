@@ -14,5 +14,7 @@ emerge --sync
   - libresprite
 - x11-plugins
   - vala-panel-appmenu
+- x11-misc
+  - vala-panel
 - games-engine
   - Godot Engine 4 (Coming SOON)
