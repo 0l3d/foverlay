@@ -11,10 +11,8 @@ emerge --sync
 
 ### Package LIST
 - app-office
-  - libresprite
+  - libresprite (Unstable)
 - x11-plugins
-  - vala-panel-appmenu
+  - vala-panel-appmenu (Stable)
 - x11-misc
-  - vala-panel
-- www-client
-  - Floorp Browser (__Stable__/**Binary**)
+  - vala-panel (Stable)
