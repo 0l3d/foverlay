@@ -11,8 +11,8 @@ emerge --sync
 
 ### Package LIST
 - app-office
-  - libresprite (Unstable)
+  - libresprite (UnStable)
 - x11-plugins
-  - vala-panel-appmenu (Stable)
+  - vala-panel-appmenu (UnStable)
 - x11-misc
-  - vala-panel (Stable)
+  - vala-panel (UnStable)
