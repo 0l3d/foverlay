@@ -16,5 +16,5 @@ emerge --sync
   - vala-panel-appmenu
 - x11-misc
   - vala-panel
-- games-engine
-  - Godot Engine 4 (Coming SOON)
+- www-client
+  - Floorp Browser (__Stable__/**Binary**)
