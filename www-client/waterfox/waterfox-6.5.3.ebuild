@@ -14,7 +14,7 @@ LICENSE=""
 SLOT="0"
 KEYWORDS="amd64 ~amd64"
 
-IUSE="+gtk +libXt +startup-notification +mime-types +dbus-glib ffmpeg"
+IUSE="+gtk +libXt startup-notification +mime-types +dbus-glib ffmpeg"
 
 RDEPEND="
 	gtk? ( gui-libs/gtk )
