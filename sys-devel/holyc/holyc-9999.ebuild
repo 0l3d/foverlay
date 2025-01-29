@@ -7,6 +7,7 @@ inherit git-r3
 
 DESCRIPTION="An implementation of Terry A. Davis's HolyC"
 HOMEPAGE="https://holyc-lang.com/"
+SRC_URI="https://raw.githubusercontent.com/0l3d/foverlay/refs/heads/master/sys-devel/holyc/holyc-lang_fix_math_linking.patch"
 EGIT_REPO_URI="https://github.com/Jamesbarford/holyc-lang.git"
 S="${WORKDIR}/${P}"
 
@@ -14,9 +15,14 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~amd64"
 
-RDEPEND="dev-vcs/git dev-build/cmake"
+RDEPEND=""
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="dev-vcs/git"
+
+src_prepare() {
+	eapply "${DISTDIR}/holyc-lang_fix_math_linking.patch"
+	eapply_user
+}
 
 src_compile() {
 	cd "${S}"
