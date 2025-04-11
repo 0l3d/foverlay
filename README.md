@@ -12,6 +12,10 @@ emerge --sync
 ### Package LIST
 - app-office
   - libresprite (UnStable)
+- media-sound
+  - lowfi (UnStable)
+- sys-devel
+  - holyc (Stable)
 - www-client
   - waterfox (Stable)
 - x11-plugins
