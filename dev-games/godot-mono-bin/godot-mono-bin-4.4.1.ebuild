@@ -16,7 +16,7 @@ IUSE="+gui"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
-	>=dev-dotnet/dotnet-sdk-6.0
+	dev-dotnet/dotnet-sdk-bin
 	media-libs/freetype
 	sys-libs/zlib
 "
