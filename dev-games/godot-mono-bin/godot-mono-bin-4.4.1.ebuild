@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop
 
-DESCRIPTION="Binary release of Godot Engine 4.4.1 with Mono (C#) support"
+DESCRIPTION="Binary release of Godot Engine ${PV} with Mono (C#) support"
 HOMEPAGE="https://godotengine.org"
 SRC_URI="https://github.com/godotengine/godot-builds/releases/download/${PV}-stable/Godot_v${PV}-stable_mono_linux_x86_64.zip -> godot-mono-${PV}.zip"
 
@@ -24,17 +24,21 @@ RDEPEND="
 S="${WORKDIR}"
 
 src_unpack() {
-	unpack godot-mono-4.4.1.zip
+	unpack godot-mono-${PV}.zip
 }
 
 src_install() {
 	insinto /opt/godot-mono
-	doins -r Godot_v4.4.1-stable_mono_linux_x86_64/*
+	doins -r Godot_v${PV}-stable_mono_linux_x86_64/*
 
-	dosym /opt/godot-mono/Godot_v4.4.1-stable_mono_linux.x86_64 /usr/bin/godot-mono
+
+	chmod +x /opt/godot-mono/Godot_v${PV}-stable_mono_linux_x86_64
+
+	# Binary için sembolik link oluştur
+	dosym /opt/godot-mono/Godot_v${PV}-stable_mono_linux.x86_64 /usr/bin/godot-mono
 
 	if use gui; then
-		# newicon Godot_v4.4.1-stable_mono_linux_x86_64/icon.svg godot-mono.svg
+		#newicon Godot_v${PV}-stable_mono_linux_x86_64/icon.svg godot-mono.svg
 		make_desktop_entry godot-mono "Godot Engine (Mono)" godot-mono "Development;IDE;"
 	fi
 }
