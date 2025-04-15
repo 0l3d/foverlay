@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
-inherit desktop python-any-r1 flag-o-matic scons-utils shell-completion toolchain-funcs xdg
+DOTNET_PKG_COMPAT="6"
+inherit desktop python-any-r1 flag-o-matic scons-utils shell-completion toolchain-funcs xdg dotnet-pkg
 
 DESCRIPTION="Multi-platform 2D and 3D game engine with a feature-rich editor and optional Mono support"
 HOMEPAGE="https://godotengine.org/"
@@ -14,7 +15,7 @@ S="${WORKDIR}/${P}-stable"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+gui +tools debug alsa +dbus +fontconfig pulseaudio raycast speech +theora +udev +upnp wayland +webp vulkan +xvfb +mono test"
+IUSE="+gui +tools debug alsa +dbus +fontconfig pulseaudio raycast speech +theora +udev +upnp wayland +webp vulkan +mono test"
 
 RESTRICT="test"
 REQUIRED_USE="wayland? ( gui )"
@@ -57,7 +58,6 @@ RDEPEND="
 	wayland? ( dev-libs/wayland gui-libs/libdecor )
 	webp? ( media-libs/libwebp:= )
 	mono? ( dev-dotnet/dotnet-sdk-bin )
-	xvfb? ( x11-misc/xvfb-run )
 "
 
 DEPEND="${RDEPEND}"
@@ -156,7 +156,8 @@ src_compile() {
 	escons "${scons_args[@]}"
 
 	if use mono; then
-		xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" ./bin/godot.linuxbsd.editor.*.mono --generate-mono-glue modules/mono/glue || die
+		dotnet-pkg_pkg_setup
+		./bin/godot.linuxbsd.editor.*.mono --headless --generate-mono-glue modules/mono/glue || die
 		python3 modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd
 
 	fi
