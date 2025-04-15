@@ -5,40 +5,44 @@ EAPI=8
 
 inherit desktop
 
-DESCRIPTION="Binary release of Godot Engine ${PV} with Mono (C#) support"
+DESCRIPTION="Godot Engine with Mono (C#) support - binary release"
 HOMEPAGE="https://godotengine.org"
-SRC_URI="https://github.com/godotengine/godot-builds/releases/download/${PV}-stable/Godot_v${PV}-stable_mono_linux_x86_64.zip -> godot-mono-${PV}.zip"
+SRC_URI="https://github.com/godotengine/godot/releases/download/${PV}-stable/Godot_v${PV}-stable_mono_linux_x86_64.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+gui"
+RESTRICT="mirror strip"
 
-DEPEND="app-arch/unzip"
 RDEPEND="
 	dev-dotnet/dotnet-sdk-bin
-	media-libs/freetype
+	media-libs/libsdl2
 	sys-libs/zlib
+	media-libs/libglvnd
 "
+
+DEPEND="${RDEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
-src_unpack() {
-	unpack godot-mono-${PV}.zip
+src_prepare() {
+	default
 }
 
 src_install() {
-	insinto /opt/godot-mono
-	doins -r Godot_v${PV}-stable_mono_linux_x86_64/*
+	local bindir="Godot_v${PV}-stable_mono_linux_x86_64"
+	local binfile="Godot_v${PV}-stable_mono_linux.x86_64"
 
+	dobin "${bindir}/${binfile}"
 
-	chmod +x /opt/godot-mono/Godot_v${PV}-stable_mono_linux_x86_64
+	mv "${D}/usr/bin/${binfile}" "${D}/usr/bin/godot-mono" || die
 
-	# Binary için sembolik link oluştur
-	dosym /opt/godot-mono/Godot_v${PV}-stable_mono_linux.x86_64 /usr/bin/godot-mono
+	make_desktop_entry "godot-mono" "Godot Engine (Mono)" "godot-mono" "Development;IDE;"
+}
 
-	if use gui; then
-		#newicon Godot_v${PV}-stable_mono_linux_x86_64/icon.svg godot-mono.svg
-		make_desktop_entry godot-mono "Godot Engine (Mono)" godot-mono "Development;IDE;"
-	fi
+pkg_postinst() {
+	elog "Godot Mono ${PV} has been installed."
+	elog "You can run it using the command: godot-mono"
+	elog "Make sure you have dotnet-sdk-bin installed for C# scripting support."
 }

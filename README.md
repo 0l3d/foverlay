@@ -10,6 +10,9 @@ emerge --sync
 ```
 
 ### Package LIST
+- dev-games
+  - godot (broken)
+  - godot-mono-bin (Stable)
 - app-office
   - libresprite (UnStable)
 - media-sound
