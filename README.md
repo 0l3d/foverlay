@@ -22,6 +22,8 @@ emerge --sync
   - holyc (Stable)
 - www-client
   - waterfox (Stable)
+- www-apps
+  - hugo (unstable but stable)
 - x11-plugins
   - vala-panel-appmenu (UnStable)
 - x11-misc
